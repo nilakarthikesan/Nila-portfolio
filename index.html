@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nila Karthikesan — Desk Setup Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --tv-pink: #ff69b4;
+            --tv-pink-dark: #ff1493;
+            --tv-pink-light: #ffb6c1;
+            --tv-bezel: #2a2a2a;
+            --tv-screen: #000;
+            --screen-glow: #ff69b4;
+            --desk-white: #f8f9fa;
+            --wall-pink: #ffe6f2;
+            --sticky-pink: #ffb6c1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--wall-pink), #fff5f8);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+            perspective: 1000px;
+        }
+
+        /* Office Scene */
+        .office-scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Wall with Bulletin Board */
+        .wall {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--wall-pink), #fff5f8);
+        }
+
+        .bulletin-board {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 300px;
+            height: 400px;
+            background: #f5f5dc;
+            border: 15px solid #8b4513;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .sticky-note {
+            position: absolute;
+            background: var(--sticky-pink);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .sticky-note:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .sticky-note.resume {
+            top: 30px;
+            left: 30px;
+            transform: rotate(-5deg);
+        }
+
+        .sticky-note.linkedin {
+            top: 100px;
+            right: 40px;
+            transform: rotate(3deg);
+        }
+
+        .sticky-note.instagram {
+            bottom: 80px;
+            left: 50px;
+            transform: rotate(-2deg);
+        }
+
+        .sticky-note.github {
+            bottom: 120px;
+            right: 60px;
+            transform: rotate(4deg);
+        }
+
+        /* Desk */
+        .desk {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: var(--desk-white);
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            border-top: 3px solid #e9ecef;
+        }
+
+        /* Bigger 3D Retro TV */
+        .tv-container {
+            position: absolute;
+            bottom: 220px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 600px;
+            perspective: 1000px;
+        }
+
+        .tv-body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--tv-pink);
+            border-radius: 40px 40px 30px 30px;
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.4),
+                inset 0 8px 20px rgba(255,255,255,0.3),
+                inset 0 -8px 20px rgba(0,0,0,0.3);
+            transform: rotateX(5deg);
+            transform-style: preserve-3d;
+        }
+
+        .tv-screen-area {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 140px;
+            background: var(--tv-bezel);
+            border-radius: 20px;
+            box-shadow: 
+                inset 0 0 30px rgba(0,0,0,0.8),
+                0 0 40px rgba(255,105,180,0.3);
+        }
+
+        .tv-screen {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            background: var(--tv-screen);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 40px rgba(0,0,0,0.9),
+                0 0 30px rgba(255,105,180,0.5);
+        }
+
+        /* Remote Control */
+        .remote-control {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(45deg, #333, #555);
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.4),
+                inset 0 2px 5px rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            gap: 15px;
+        }
+
+        .remote-display {
+            background: #000;
+            color: var(--tv-pink);
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .remote-button {
+            background: var(--tv-pink);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .remote-button:hover {
+            background: var(--tv-pink-light);
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        .remote-button:active {
+            transform: scale(0.95);
+        }
+
+        .remote-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        /* TV Controls */
+        .tv-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 30;
+        }
+
+        .control-button {
+            background: var(--tv-pink-dark);
+            border: 2px solid var(--tv-pink-light);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            box-shadow: 
+                0 3px 8px rgba(0,0,0,0.3),
+                inset 0 1px 3px rgba(255,255,255,0.2);
+        }
+
+        .control-button:hover {
+            background: var(--tv-pink-light);
+            color: var(--tv-pink-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .control-button:active {
+            transform: translateY(0);
+        }
+
+        /* Channel Menu */
+        .channel-menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.95);
+            border: 3px solid var(--tv-pink);
+            border-radius: 20px;
+            padding: 30px;
+            display: none;
+            z-index: 50;
+            min-width: 400px;
+            box-shadow: 0 0 40px rgba(255,105,180,0.6);
+        }
+
+        .channel-menu.active {
+            display: block;
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--tv-pink);
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px var(--tv-pink);
+        }
+
+        .channel-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .channel-item {
+            background: rgba(255,105,180,0.1);
+            border: 2px solid var(--tv-pink);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .channel-item:hover {
+            background: rgba(255,105,180,0.2);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255,105,180,0.4);
+        }
+
+        .channel-number {
+            background: var(--tv-pink);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .channel-info {
+            flex: 1;
+        }
+
+        .channel-name {
+            font-weight: 600;
+            color: var(--tv-pink);
+            font-size: 16px;
+        }
+
+        .channel-desc {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 3px;
+        }
+
+        /* Content Pages */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .page.prev {
+            transform: translateX(-100%);
+        }
+
+        /* Home Page */
+        .home-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .home-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 25px var(--screen-glow);
+            animation: flicker 2s infinite;
+        }
+
+        .home-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: #ccc;
+            max-width: 500px;
+        }
+
+        .menu-button {
+            background: var(--tv-pink);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .menu-button:hover {
+            background: var(--tv-pink-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Project Pages */
+        .project-page {
+            padding: 25px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--tv-pink);
+            text-shadow: 0 0 20px var(--screen-glow);
+        }
+
+        .project-goal {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .project-sections {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,105,180,0.2);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--tv-pink);
+        }
+
+        .tech-list, .learnings-list {
+            list-style: none;
+        }
+
+        .tech-list li, .learnings-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .tech-list li::before, .learnings-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--tv-pink);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            background: var(--tv-pink);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            background: var(--tv-pink-light);
+            transform: scale(1.05);
+        }
+
+        /* Back Button */
+        .back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid var(--tv-pink);
+            color: var(--tv-pink);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            z-index: 30;
+        }
+
+        .back-button:hover {
+            background: var(--tv-pink);
+            color: white;
+            box-shadow: 0 0 20px var(--screen-glow);
+        }
+
+        /* Channel Display */
+        .channel-display {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.8);
+            padding: 12px 20px;
+            border-radius: 15px;
+            border: 2px solid var(--tv-pink);
+            box-shadow: 0 0 20px var(--screen-glow);
+            z-index: 20;
+        }
+
+        .channel-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--tv-pink);
+            text-shadow: 0 0 15px var(--screen-glow);
+        }
+
+        .channel-name {
+            font-size: 1rem;
+            color: #ccc;
+            margin-top: 3px;
+        }
+
+        /* Animations */
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .tv-container {
+                width: 700px;
+                height: 500px;
+            }
+            
+            .bulletin-board {
+                width: 250px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .tv-container {
+                width: 600px;
+                height: 400px;
+            }
+            
+            .bulletin-board {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="office-scene">
+        <!-- Wall with Bulletin Board -->
+        <div class="wall">
+            <div class="bulletin-board">
+                <div class="sticky-note resume" onclick="window.open('/resume.pdf', '_blank')">
+                    📄<br>RESUME
+                </div>
+                <div class="sticky-note linkedin" onclick="window.open('https://linkedin.com/in/nila', '_blank')">
+                    💼<br>LINKEDIN
+                </div>
+                <div class="sticky-note instagram" onclick="window.open('https://instagram.com/nila', '_blank')">
+                    📸<br>INSTAGRAM
+                </div>
+                <div class="sticky-note github" onclick="window.open('https://github.com/nila', '_blank')">
+                    💻<br>GITHUB
+                </div>
+            </div>
+        </div>
+
+        <!-- Desk -->
+        <div class="desk"></div>
+
+        <!-- Bigger 3D Retro TV -->
+        <div class="tv-container">
+            <div class="tv-body">
+                <div class="tv-screen-area">
+                    <div class="tv-screen">
+                        <!-- Channel Display -->
+                        <div class="channel-display">
+                            <div class="channel-number" id="channelNumber">0</div>
+                            <div class="channel-name" id="channelName">HOME</div>
+                        </div>
+
+                        <!-- Back Button -->
+                        <button class="back-button" id="backButton" style="display: none;">← BACK</button>
+
+                        <!-- Home Page -->
+                        <div class="page home-page active" id="homePage">
+                            <h1 class="home-title">NILA TV</h1>
+                            <p class="home-subtitle">Welcome to my portfolio channel! Use the remote or click the menu button to explore my projects.</p>
+                            <button class="menu-button" id="menuButton">📺 CHANNEL MENU</button>
+                        </div>
+
+                        <!-- Project 1: RAG Moderation -->
+                        <div class="page project-page" id="project1">
+                            <div class="project-header">
+                                <h1 class="project-title">RAG‑Enhanced Moderation Dashboard</h1>
+                                <p class="project-goal">Build a content moderation platform that uses RAG (Retrieval‑Augmented Generation) to justify why a piece of media is flagged as inappropriate. Instead of a "black box" flagging system, reviewers receive grounded, explainable AI insights with traceable evidence.</p>
+                            </div>
+                            
+                            <div class="project-sections">
+                                <div class="project-section">
+                                    <h3 class="section-title">Tech Stack</h3>
+                                    <ul class="tech-list">
+                                        <li>LLM & RAG: LangChain + OpenAI</li>
+                                        <li>Vector Store: FAISS (dev) / Weaviate (prod)</li>
+                                        <li>Embeddings: CLIP for visual content, OpenAI for text/policy content</li>
+                                        <li>Backend: FastAPI</li>
+                                        <li>Frontend: React.js (reviewer dashboard with frame scrubber)</li>
+                                        <li>Database/Storage: Supabase (Postgres + Object Storage for frames and metadata)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Key Learnings</h3>
+                                    <ul class="learnings-list">
+                                        <li>How to use vector similarity + context retrieval to ground LLM responses.</li>
+                                        <li>How to evaluate factuality & traceability of moderation explanations.</li>
+                                        <li>How to tune similarity thresholds to balance precision & recall in moderation tasks.</li>
+                                        <li>How to measure model performance against labeled datasets (PR curves, F1 scoring).</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Example Use Case</h3>
+                                    <p>A sports clip is flagged for "violence." The system: Extracts keyframes → CLIP embeddings → retrieves similar UFC‑style flagged frames. Retrieves relevant policy text (violence category). LLM generates: "This frame shows physical altercations similar to previous UFC clips flagged for violence." Output includes evidence links for human verification.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/nila/rag-moderation" target="_blank" class="project-link">GitHub</a>
+                                <a href="/projects/rag-moderation/architecture" class="project-link">Architecture</a>
+                                <a href="/projects/rag-moderation/daily-log" class="project-link">Daily Log</a>
+                            </div>
+                        </div>
+
+                        <!-- Project 2: LLM SEO Audit -->
+                        <div class="page project-page" id="project2">
+                            <div class="project-header">
+                                <h1 class="project-title">LLM Evaluation Agent for SEO Answer Auditing</h1>
+                                <p class="project-goal">Develop an automated LLM evaluation agent that continuously queries AI search engines (ChatGPT, Claude, Perplexity) and evaluates brand visibility, truthfulness, and answer drift over time. This allows businesses to track their "share‑of‑voice" in AI‑generated answers and detect hallucinations or content shifts.</p>
+                            </div>
+                            
+                            <div class="project-sections">
+                                <div class="project-section">
+                                    <h3 class="section-title">Tech Stack</h3>
+                                    <ul class="tech-list">
+                                        <li>Agents & Automation: LangChain agents for scheduled querying</li>
+                                        <li>Evaluation: LLM‑as‑a‑Judge (GPT‑4) for semantic comparison & truthfulness scoring</li>
+                                        <li>Database: PostgreSQL for snapshot storage</li>
+                                        <li>Vector Search: Pinecone / Qdrant for historical answer similarity</li>
+                                        <li>Dashboarding: Streamlit or Dash for time‑series analytics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Key Learnings</h3>
+                                    <ul class="learnings-list">
+                                        <li>How to build automated evaluation pipelines for LLM answers at scale.</li>
+                                        <li>Techniques for semantic diffing of AI‑generated answers across time.</li>
+                                        <li>Prompt engineering for LLM‑as‑a‑Critic workflows (hallucination detection, entity presence).</li>
+                                        <li>Strategies for tracking share‑of‑voice for brands in AI search engines.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Example Use Case</h3>
+                                    <p>Query: "What's the best CRM for small businesses?" Agent queries Perplexity, ChatGPT, Claude and stores snapshots. Weekly evaluation shows: HubSpot mentioned in 80% of responses (up 15% WoW), Salesforce visibility dropped to 30%, Change correlated with Perplexity shifting to newer web sources.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/nila/llm-seo-audit" target="_blank" class="project-link">GitHub</a>
+                                <a href="/projects/llm-seo-audit/architecture" class="project-link">Architecture</a>
+                                <a href="/projects/llm-seo-audit/daily-log" class="project-link">Daily Log</a>
+                            </div>
+                        </div>
+
+                        <!-- Project 3: FitnessPal AI -->
+                        <div class="page project-page" id="project3">
+                            <div class="project-header">
+                                <h1 class="project-title">FitnessPal + AI Agent for Personalized Meal Planning</h1>
+                                <p class="project-goal">Build a FitnessPal‑style macro tracker with an AI agent that generates daily meal plans based on a user's macro goals, food logs, and dietary constraints. This project integrates traditional backend development with LLM agent tool‑calling, creating an intelligent fitness assistant.</p>
+                            </div>
+                            
+                            <div class="project-sections">
+                                <div class="project-section">
+                                    <h3 class="section-title">Tech Stack</h3>
+                                    <ul class="tech-list">
+                                        <li>Backend: FastAPI (Auth, Food Logs, Macro Goals, Agent API)</li>
+                                        <li>Database: Supabase (Postgres)</li>
+                                        <li>Frontend: React/Next.js (meal log & AI plan viewer)</li>
+                                        <li>Agent: OpenAI LLM with tool‑calling for food search and plan generation</li>
+                                        <li>Auth: JWT tokens; optional OAuth for agent authorization</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Key Learnings</h3>
+                                    <ul class="learnings-list">
+                                        <li>Designing secure agent tool‑calling APIs with scope‑limited tokens.</li>
+                                        <li>Structuring nutrition databases to allow macro computation and query efficiency.</li>
+                                        <li>Building LLM‑driven meal plans that respect real macro goals (±5% tolerance).</li>
+                                        <li>Laying groundwork for future AI coaching features (critique, swaps, recipe embeddings).</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Example Use Case</h3>
+                                    <p>User logs breakfast and sets macro goal: 120g protein / 60g carbs / 40g fat. Agent queries: get_goals(), get_logs(date), search_foods(). Agent returns: "For dinner, grilled chicken with quinoa and broccoli meets your macro target within ±5%."</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/nila/fitnesspal-ai" target="_blank" class="project-link">GitHub</a>
+                                <a href="/projects/fitnesspal-ai/architecture" class="project-link">Architecture</a>
+                                <a href="/projects/fitnesspal-ai/daily-log" class="project-link">Daily Log</a>
+                            </div>
+                        </div>
+
+                        <!-- About Page -->
+                        <div class="page project-page" id="project4">
+                            <div class="project-header">
+                                <h1 class="project-title">About Nila Karthikesan</h1>
+                                <p class="project-goal">Full-stack developer specializing in LLM evaluation, vector search/RAG, and AI agent integration. Three end‑to‑end projects that demonstrate expertise in modern web development.</p>
+                            </div>
+                            
+                            <div class="project-sections">
+                                <div class="project-section">
+                                    <h3 class="section-title">Skills</h3>
+                                    <ul class="tech-list">
+                                        <li>Full-Stack Development: React, Next.js, FastAPI, Python</li>
+                                        <li>AI & LLMs: OpenAI, LangChain, Vector Search, RAG</li>
+                                        <li>Databases: PostgreSQL, Supabase, Vector Stores</li>
+                                        <li>DevOps: Docker, CI/CD, Cloud Deployment</li>
+                                        <li>Evaluation: LLM-as-a-Judge, Performance Metrics</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Experience</h3>
+                                    <ul class="learnings-list">
+                                        <li>Building explainable AI systems with traceable evidence</li>
+                                        <li>Automated evaluation pipelines for LLM performance</li>
+                                        <li>Secure agent tool-calling APIs with scope-limited tokens</li>
+                                        <li>Vector similarity and context retrieval for grounded responses</li>
+                                        <li>Performance measurement against labeled datasets</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="project-section">
+                                    <h3 class="section-title">Philosophy</h3>
+                                    <p>Don't you think the web should be fun again? Buttons and knobs and sounds and experimentation? We have an amazing medium here, to be able to express and do whatever we want. Let's do it!</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/nila" target="_blank" class="project-link">GitHub</a>
+                                <a href="https://linkedin.com/in/nila" target="_blank" class="project-link">LinkedIn</a>
+                                <a href="mailto:nila@example.com" class="project-link">Email</a>
+                            </div>
+       
