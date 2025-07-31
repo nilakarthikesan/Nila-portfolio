@@ -800,4 +800,280 @@
                                 <a href="https://linkedin.com/in/nila" target="_blank" class="project-link">LinkedIn</a>
                                 <a href="mailto:nila@example.com" class="project-link">Email</a>
                             </div>
-       
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TV Controls -->
+                <div class="tv-controls">
+                    <button class="control-button" id="menuButton">📺 MENU</button>
+                    <button class="control-button" id="powerButton">⏻ POWER</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remote Control -->
+        <div class="remote-control">
+            <div class="remote-display" id="remoteDisplay">
+                CH: 0<br>
+                HOME
+            </div>
+            <div class="remote-row">
+                <button class="remote-button" data-channel="0">0</button>
+                <button class="remote-button" data-channel="1">1</button>
+                <button class="remote-button" data-channel="2">2</button>
+            </div>
+            <div class="remote-row">
+                <button class="remote-button" data-channel="3">3</button>
+                <button class="remote-button" data-channel="4">4</button>
+                <button class="remote-button" id="menuRemote">MENU</button>
+            </div>
+        </div>
+
+        <!-- Channel Menu -->
+        <div class="channel-menu" id="channelMenu">
+            <div class="menu-title">CHANNEL GUIDE</div>
+            <div class="channel-list">
+                <div class="channel-item" data-channel="0">
+                    <div class="channel-number">0</div>
+                    <div class="channel-info">
+                        <div class="channel-name">HOME</div>
+                        <div class="channel-desc">Welcome to NILA TV</div>
+                    </div>
+                </div>
+                <div class="channel-item" data-channel="1">
+                    <div class="channel-number">1</div>
+                    <div class="channel-info">
+                        <div class="channel-name">RAG MODERATION</div>
+                        <div class="channel-desc">Content moderation with explainable AI</div>
+                    </div>
+                </div>
+                <div class="channel-item" data-channel="2">
+                    <div class="channel-number">2</div>
+                    <div class="channel-info">
+                        <div class="channel-name">LLM SEO AUDIT</div>
+                        <div class="channel-desc">Automated evaluation of AI search engines</div>
+                    </div>
+                </div>
+                <div class="channel-item" data-channel="3">
+                    <div class="channel-number">3</div>
+                    <div class="channel-info">
+                        <div class="channel-name">FITNESSPAL AI</div>
+                        <div class="channel-desc">AI-powered meal planning assistant</div>
+                    </div>
+                </div>
+                <div class="channel-item" data-channel="4">
+                    <div class="channel-number">4</div>
+                    <div class="channel-info">
+                        <div class="channel-name">ABOUT NILA</div>
+                        <div class="channel-desc">Skills, experience, and philosophy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Audio Context for TV sounds
+        let audioContext;
+        let channelChangeSource;
+        let isMuted = false;
+
+        // Initialize audio
+        function initAudio() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                createChannelChangeSound();
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        // Create channel change sound
+        function createChannelChangeSound() {
+            const bufferSize = audioContext.sampleRate * 0.3;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const output = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                // Create a retro TV channel change sound
+                output[i] = Math.sin(i * 0.2) * Math.sin(i * 0.05) * Math.random() * 0.4;
+            }
+            
+            channelChangeSource = audioContext.createBufferSource();
+            channelChangeSource.buffer = buffer;
+            
+            const gainNode = audioContext.createGain();
+            gainNode.gain.value = 0.3;
+            
+            channelChangeSource.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+        }
+
+        // Play channel change sound
+        function playChannelChange() {
+            if (audioContext && !isMuted) {
+                channelChangeSource.start();
+                setTimeout(() => {
+                    createChannelChangeSound(); // Recreate for next use
+                }, 300);
+            }
+        }
+
+        // Page management
+        let currentPage = 'home';
+        const pages = {
+            'home': document.getElementById('homePage'),
+            'project1': document.getElementById('project1'),
+            'project2': document.getElementById('project2'),
+            'project3': document.getElementById('project3'),
+            'project4': document.getElementById('project4')
+        };
+
+        function changePage(pageName) {
+            if (currentPage === pageName) return;
+            
+            // Play channel change sound
+            playChannelChange();
+            
+            setTimeout(() => {
+                // Hide current page
+                pages[currentPage].classList.remove('active');
+                pages[currentPage].classList.add('prev');
+                
+                // Show new page
+                pages[pageName].classList.remove('prev');
+                pages[pageName].classList.add('active');
+                
+                // Update channel display
+                updateChannelDisplay(pageName);
+                
+                // Show/hide back button
+                const backButton = document.getElementById('backButton');
+                if (pageName === 'home') {
+                    backButton.style.display = 'none';
+                } else {
+                    backButton.style.display = 'block';
+                }
+                
+                currentPage = pageName;
+            }, 200);
+        }
+
+        function updateChannelDisplay(pageName) {
+            const channelNumber = document.getElementById('channelNumber');
+            const channelName = document.getElementById('channelName');
+            const remoteDisplay = document.getElementById('remoteDisplay');
+            
+            let channelNum, channelTitle;
+            
+            switch(pageName) {
+                case 'home':
+                    channelNum = '0';
+                    channelTitle = 'HOME';
+                    break;
+                case 'project1':
+                    channelNum = '1';
+                    channelTitle = 'RAG MODERATION';
+                    break;
+                case 'project2':
+                    channelNum = '2';
+                    channelTitle = 'LLM SEO AUDIT';
+                    break;
+                case 'project3':
+                    channelNum = '3';
+                    channelTitle = 'FITNESSPAL AI';
+                    break;
+                case 'project4':
+                    channelNum = '4';
+                    channelTitle = 'ABOUT';
+                    break;
+            }
+            
+            channelNumber.textContent = channelNum;
+            channelName.textContent = channelTitle;
+            remoteDisplay.innerHTML = `CH: ${channelNum}<br>${channelTitle}`;
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize audio
+            initAudio();
+            
+            // Menu button clicks
+            document.querySelectorAll('#menuButton').forEach(button => {
+                button.addEventListener('click', function() {
+                    const channelMenu = document.getElementById('channelMenu');
+                    channelMenu.classList.toggle('active');
+                });
+            });
+            
+            // Remote menu button
+            document.getElementById('menuRemote').addEventListener('click', function() {
+                const channelMenu = document.getElementById('channelMenu');
+                channelMenu.classList.toggle('active');
+            });
+            
+            // Channel item clicks
+            document.querySelectorAll('.channel-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const channel = this.getAttribute('data-channel');
+                    const channelMenu = document.getElementById('channelMenu');
+                    channelMenu.classList.remove('active');
+                    
+                    if (channel === '0') {
+                        changePage('home');
+                    } else {
+                        changePage(`project${channel}`);
+                    }
+                });
+            });
+            
+            // Remote button clicks
+            document.querySelectorAll('.remote-button[data-channel]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const channel = this.getAttribute('data-channel');
+                    if (channel === '0') {
+                        changePage('home');
+                    } else {
+                        changePage(`project${channel}`);
+                    }
+                });
+            });
+            
+            // Back button
+            document.getElementById('backButton').addEventListener('click', function() {
+                changePage('home');
+            });
+            
+            // Power button
+            document.getElementById('powerButton').addEventListener('click', function() {
+                if (document.body.style.opacity !== '0.3') {
+                    // Turn off TV effect
+                    document.body.style.opacity = '0.3';
+                    this.textContent = '⏻ OFF';
+                } else {
+                    // Turn on TV effect
+                    document.body.style.opacity = '1';
+                    this.textContent = '⏻ POWER';
+                }
+            });
+            
+            // Click outside menu to close
+            document.addEventListener('click', function(e) {
+                const channelMenu = document.getElementById('channelMenu');
+                const menuButtons = document.querySelectorAll('#menuButton, #menuRemote');
+                
+                if (!channelMenu.contains(e.target) && !Array.from(menuButtons).some(btn => btn.contains(e.target))) {
+                    channelMenu.classList.remove('active');
+                }
+                
+                // Wake up TV if off
+                if (document.body.style.opacity === '0.3') {
+                    document.getElementById('powerButton').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
