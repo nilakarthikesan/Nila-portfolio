@@ -2,7 +2,7 @@
 
 A unique portfolio website that evolved from a traditional Next.js application into an immersive retro TV desk setup experience.
 
-## 🎉 **LIVE PORTFOLIO**
+## **LIVE PORTFOLIO**
 
 **Your portfolio is now live at: [http://nilakarthikesan.com/](http://nilakarthikesan.com/)**
 
@@ -32,7 +32,7 @@ The portfolio now features a complete desk environment with:
 
 ## How to View the Portfolio
 
-### 🌐 **Live Website (Recommended)**
+### **Live Website (Recommended)**
 **Visit: [http://nilakarthikesan.com/](http://nilakarthikesan.com/)**
 
 Your portfolio is now live and accessible to anyone with an internet connection!
