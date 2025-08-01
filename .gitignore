@@ -60,4 +60,10 @@ jspm_packages/
 .yarn-integrity
 
 # dotenv environment variables file
-.env 
+.env
+
+# Large media files (not needed for live portfolio)
+assets/
+*.mp4
+*.mov
+*.avi 
