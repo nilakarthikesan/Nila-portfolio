@@ -665,6 +665,13 @@
             color: var(--tv-pink);
             text-shadow: 0 0 20px var(--screen-glow);
             font-family: 'Press Start 2P', monospace;
+            transition: all 0.3s;
+        }
+
+        .project-title:hover {
+            color: var(--tv-pink-light);
+            text-shadow: 0 0 30px var(--screen-glow);
+            transform: scale(1.02);
         }
 
         .project-goal {
@@ -840,7 +847,7 @@
         <!-- Wall with Bulletin Board -->
         <div class="wall">
             <div class="bulletin-board">
-                <div class="sticky-note resume" onclick="window.open('/resume.pdf', '_blank')">
+                <div class="sticky-note resume" onclick="window.open('Nila_s_Resume-11.pdf', '_blank')">
                     📄<br>RESUME
                 </div>
                 <div class="sticky-note linkedin" onclick="window.open('https://www.linkedin.com/in/nila-karthikesan/', '_blank')">
@@ -882,7 +889,7 @@
                         <!-- Project 1: RAG Moderation -->
                         <div class="page project-page" id="project1">
                             <div class="project-header">
-                                <h1 class="project-title">RAG‑Enhanced Moderation Dashboard</h1>
+                                <h1 class="project-title" onclick="window.open('https://github.com/nilakarthikesan/clip-content-analyzer', '_blank')" style="cursor: pointer;">RAG‑Enhanced Moderation Dashboard</h1>
                                 <p class="project-goal">Build a content moderation platform that uses RAG (Retrieval‑Augmented Generation) to justify why a piece of media is flagged as inappropriate. Instead of a "black box" flagging system, reviewers receive grounded, explainable AI insights with traceable evidence.</p>
                             </div>
                             
@@ -916,7 +923,6 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nilakarthikesan/clip-content-analyzer" target="_blank" class="project-link">GitHub</a>
                                 <a href="/projects/rag-moderation/architecture" class="project-link">Architecture</a>
                                 <a href="/projects/rag-moderation/daily-log" class="project-link">Daily Log</a>
                             </div>
@@ -925,7 +931,7 @@
                         <!-- Project 2: LLM SEO Audit -->
                         <div class="page project-page" id="project2">
                             <div class="project-header">
-                                <h1 class="project-title">LLM Evaluation Agent for SEO Answer Auditing</h1>
+                                <h1 class="project-title" onclick="window.open('https://github.com/nilakarthikesan/llm-seo-audit', '_blank')" style="cursor: pointer;">LLM Evaluation Agent for SEO Answer Auditing</h1>
                                 <p class="project-goal">Develop an automated LLM evaluation agent that continuously queries AI search engines (ChatGPT, Claude, Perplexity) and evaluates brand visibility, truthfulness, and answer drift over time. This allows businesses to track their "share‑of‑voice" in AI‑generated answers and detect hallucinations or content shifts.</p>
                             </div>
                             
@@ -958,7 +964,6 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nila/llm-seo-audit" target="_blank" class="project-link">GitHub</a>
                                 <a href="/projects/llm-seo-audit/architecture" class="project-link">Architecture</a>
                                 <a href="/projects/llm-seo-audit/daily-log" class="project-link">Daily Log</a>
                             </div>
@@ -967,7 +972,7 @@
                         <!-- Project 3: FitnessPal AI -->
                         <div class="page project-page" id="project3">
                             <div class="project-header">
-                                <h1 class="project-title">FitnessPal + AI Agent for Personalized Meal Planning</h1>
+                                <h1 class="project-title" onclick="window.open('https://github.com/nilakarthikesan/macro-tracking-app', '_blank')" style="cursor: pointer;">FitnessPal + AI Agent for Personalized Meal Planning</h1>
                                 <p class="project-goal">Build a FitnessPal‑style macro tracker with an AI agent that generates daily meal plans based on a user's macro goals, food logs, and dietary constraints. This project integrates traditional backend development with LLM agent tool‑calling, creating an intelligent fitness assistant.</p>
                             </div>
                             
@@ -1000,7 +1005,6 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nilakarthikesan/macro-tracking-app" target="_blank" class="project-link">GitHub</a>
                                 <a href="/projects/fitnesspal-ai/architecture" class="project-link">Architecture</a>
                                 <a href="/projects/fitnesspal-ai/daily-log" class="project-link">Daily Log</a>
                             </div>
