@@ -28,7 +28,7 @@
 
         body {
             font-family: 'VT323', monospace;
-            background: linear-gradient(135deg, #ffe6f2, #fff0f5);
+            background: #000000;
             color: white;
             overflow: hidden;
             height: 100vh;
@@ -36,7 +36,59 @@
             position: relative;
         }
 
-        /* Animated Sparkly Background */
+        /* Animated Black Background */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, rgba(255,182,193,0.4) 50%, transparent 100%);
+            box-shadow: 0 0 20px rgba(255,105,180,0.6);
+            animation: float-orb 15s infinite linear;
+        }
+
+        .orb1 { width: 60px; height: 60px; top: 10%; left: 10%; animation-delay: 0s; animation-duration: 20s; }
+        .orb2 { width: 40px; height: 40px; top: 20%; left: 80%; animation-delay: 2s; animation-duration: 18s; }
+        .orb3 { width: 80px; height: 80px; top: 60%; left: 20%; animation-delay: 4s; animation-duration: 25s; }
+        .orb4 { width: 50px; height: 50px; top: 30%; left: 70%; animation-delay: 6s; animation-duration: 22s; }
+        .orb5 { width: 70px; height: 70px; top: 80%; left: 60%; animation-delay: 8s; animation-duration: 19s; }
+        .orb6 { width: 45px; height: 45px; top: 15%; left: 50%; animation-delay: 10s; animation-duration: 23s; }
+        .orb7 { width: 55px; height: 55px; top: 70%; left: 85%; animation-delay: 12s; animation-duration: 21s; }
+        .orb8 { width: 65px; height: 65px; top: 40%; left: 15%; animation-delay: 14s; animation-duration: 24s; }
+        .orb9 { width: 35px; height: 35px; top: 90%; left: 30%; animation-delay: 16s; animation-duration: 17s; }
+        .orb10 { width: 75px; height: 75px; top: 50%; left: 90%; animation-delay: 18s; animation-duration: 26s; }
+
+        @keyframes float-orb {
+            0% {
+                transform: translateY(100vh) translateX(0px) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(20px) scale(1);
+            }
+            50% {
+                transform: translateY(50vh) translateX(-30px) scale(1.2);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-10vh) translateX(40px) scale(1);
+            }
+            100% {
+                transform: translateY(-10vh) translateX(0px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Animated Background */
         .sparkly-background {
             position: fixed;
             top: 0;
@@ -45,37 +97,50 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
+            background: linear-gradient(135deg, rgba(255,230,242,0.5), rgba(255,240,245,0.5));
+            overflow: hidden;
         }
 
+        /* Moving particles */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,182,193,0.8) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: particle-float 6s infinite linear;
+            box-shadow: 0 0 10px rgba(255,182,193,0.6);
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 10s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 7s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; animation-duration: 12s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; animation-duration: 9s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; animation-duration: 11s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; animation-duration: 8s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; animation-duration: 13s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 8s; animation-duration: 10s; }
+
+        /* Additional visible sparkles */
         .sparkle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,182,193,0.6) 50%, transparent 100%);
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,182,193,0.8) 50%, transparent 100%);
             border-radius: 50%;
             animation: sparkle-animation 3s infinite;
+            box-shadow: 0 0 8px rgba(255,182,193,0.8);
         }
 
-        .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 20%; left: 80%; animation-delay: 0.5s; }
-        .sparkle:nth-child(3) { top: 30%; left: 30%; animation-delay: 1s; }
-        .sparkle:nth-child(4) { top: 40%; left: 70%; animation-delay: 1.5s; }
-        .sparkle:nth-child(5) { top: 50%; left: 20%; animation-delay: 2s; }
-        .sparkle:nth-child(6) { top: 60%; left: 60%; animation-delay: 2.5s; }
-        .sparkle:nth-child(7) { top: 70%; left: 40%; animation-delay: 0.3s; }
-        .sparkle:nth-child(8) { top: 80%; left: 90%; animation-delay: 0.8s; }
-        .sparkle:nth-child(9) { top: 15%; left: 50%; animation-delay: 1.2s; }
-        .sparkle:nth-child(10) { top: 25%; left: 15%; animation-delay: 1.7s; }
-        .sparkle:nth-child(11) { top: 35%; left: 85%; animation-delay: 2.2s; }
-        .sparkle:nth-child(12) { top: 45%; left: 35%; animation-delay: 0.7s; }
-        .sparkle:nth-child(13) { top: 55%; left: 75%; animation-delay: 1.3s; }
-        .sparkle:nth-child(14) { top: 65%; left: 25%; animation-delay: 1.8s; }
-        .sparkle:nth-child(15) { top: 75%; left: 65%; animation-delay: 2.3s; }
-        .sparkle:nth-child(16) { top: 85%; left: 45%; animation-delay: 0.4s; }
-        .sparkle:nth-child(17) { top: 5%; left: 25%; animation-delay: 0.9s; }
-        .sparkle:nth-child(18) { top: 95%; left: 15%; animation-delay: 1.4s; }
-        .sparkle:nth-child(19) { top: 8%; left: 75%; animation-delay: 1.9s; }
-        .sparkle:nth-child(20) { top: 88%; left: 85%; animation-delay: 2.4s; }
+        .sparkle:nth-child(10) { top: 15%; left: 15%; animation-delay: 0s; }
+        .sparkle:nth-child(11) { top: 25%; left: 85%; animation-delay: 0.5s; }
+        .sparkle:nth-child(12) { top: 35%; left: 25%; animation-delay: 1s; }
+        .sparkle:nth-child(13) { top: 45%; left: 75%; animation-delay: 1.5s; }
+        .sparkle:nth-child(14) { top: 55%; left: 35%; animation-delay: 2s; }
+        .sparkle:nth-child(15) { top: 65%; left: 65%; animation-delay: 2.5s; }
+        .sparkle:nth-child(16) { top: 75%; left: 45%; animation-delay: 0.3s; }
+        .sparkle:nth-child(17) { top: 85%; left: 55%; animation-delay: 0.8s; }
 
         @keyframes sparkle-animation {
             0% {
@@ -92,37 +157,48 @@
             }
         }
 
-        /* Floating sparkles */
-        .floating-sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,182,193,0.8) 50%, transparent 100%);
-            border-radius: 50%;
-            animation: float-sparkle 4s infinite linear;
-        }
-
-        .floating-sparkle:nth-child(21) { top: 0%; left: 20%; animation-delay: 0s; }
-        .floating-sparkle:nth-child(22) { top: 0%; left: 60%; animation-delay: 1s; }
-        .floating-sparkle:nth-child(23) { top: 0%; left: 80%; animation-delay: 2s; }
-        .floating-sparkle:nth-child(24) { top: 0%; left: 40%; animation-delay: 3s; }
-
-        @keyframes float-sparkle {
+        @keyframes particle-float {
             0% {
                 opacity: 0;
-                transform: translateY(-20px) scale(0);
+                transform: translateY(100vh) scale(0);
             }
-            20% {
+            10% {
                 opacity: 1;
-                transform: translateY(0px) scale(1);
+                transform: translateY(90vh) scale(1);
             }
-            80% {
+            90% {
                 opacity: 1;
-                transform: translateY(100vh) scale(1);
+                transform: translateY(10vh) scale(1);
             }
             100% {
                 opacity: 0;
-                transform: translateY(120vh) scale(0);
+                transform: translateY(0vh) scale(0);
+            }
+        }
+
+        /* Wave effect */
+        .wave {
+            position: absolute;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(ellipse at center, rgba(255,182,193,0.3) 0%, transparent 70%);
+            animation: wave-move 15s infinite linear;
+            top: -100%;
+            left: -100%;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -7s;
+            animation-direction: reverse;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, transparent 70%);
+        }
+
+        @keyframes wave-move {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
             }
         }
 
@@ -143,7 +219,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--wall-pink), #fff5f8);
+            background: #000000;
         }
 
         .bulletin-board {
@@ -209,9 +285,9 @@
             left: 0;
             width: 100%;
             height: 200px;
-            background: var(--desk-white);
-            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
-            border-top: 3px solid #e9ecef;
+            background: #000000;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
+            border-top: 3px solid #333;
         }
 
         /* Bigger 3D Retro TV */
@@ -573,6 +649,7 @@
         /* Project Pages */
         .project-page {
             padding: 15px;
+            padding-top: 80px; /* Add space for BACK button and channel display */
             height: 100%;
             overflow-y: auto;
         }
@@ -661,16 +738,16 @@
         /* Back Button */
         .back-button {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.8);
-            border: 2px solid var(--tv-pink);
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.9);
+            border: 1px solid var(--tv-pink);
             color: var(--tv-pink);
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 15px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 12px;
             transition: all 0.3s;
             z-index: 30;
         }
@@ -684,27 +761,27 @@
         /* Channel Display */
         .channel-display {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0,0,0,0.8);
-            padding: 12px 20px;
-            border-radius: 15px;
-            border: 2px solid var(--tv-pink);
-            box-shadow: 0 0 20px var(--screen-glow);
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.9);
+            padding: 8px 15px;
+            border-radius: 12px;
+            border: 1px solid var(--tv-pink);
+            box-shadow: 0 0 15px var(--screen-glow);
             z-index: 20;
         }
 
         .channel-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--tv-pink);
-            text-shadow: 0 0 15px var(--screen-glow);
+            text-shadow: 0 0 10px var(--screen-glow);
         }
 
         .channel-name {
-            font-size: 1rem;
+            font-size: 0.8rem;
             color: #ccc;
-            margin-top: 3px;
+            margin-top: 2px;
         }
 
         /* Animations */
@@ -736,35 +813,27 @@
                 display: none;
             }
         }
+
+        /* Simple Animated Background (removed - using black background) */
+
+        /* Old moving dots removed - using floating orbs instead */
     </style>
 </head>
 <body>
-    <!-- Animated Sparkly Background -->
-    <div class="sparkly-background">
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="floating-sparkle"></div>
-        <div class="floating-sparkle"></div>
-        <div class="floating-sparkle"></div>
-        <div class="floating-sparkle"></div>
+    <!-- Old animated background removed -->
+
+    <!-- Animated Black Background -->
+    <div class="animated-background">
+        <div class="floating-orb orb1"></div>
+        <div class="floating-orb orb2"></div>
+        <div class="floating-orb orb3"></div>
+        <div class="floating-orb orb4"></div>
+        <div class="floating-orb orb5"></div>
+        <div class="floating-orb orb6"></div>
+        <div class="floating-orb orb7"></div>
+        <div class="floating-orb orb8"></div>
+        <div class="floating-orb orb9"></div>
+        <div class="floating-orb orb10"></div>
     </div>
 
     <div class="office-scene">
@@ -774,13 +843,13 @@
                 <div class="sticky-note resume" onclick="window.open('/resume.pdf', '_blank')">
                     📄<br>RESUME
                 </div>
-                <div class="sticky-note linkedin" onclick="window.open('https://linkedin.com/in/nila', '_blank')">
+                <div class="sticky-note linkedin" onclick="window.open('https://www.linkedin.com/in/nila-karthikesan/', '_blank')">
                     💼<br>LINKEDIN
                 </div>
-                <div class="sticky-note instagram" onclick="window.open('https://instagram.com/nila', '_blank')">
+                <div class="sticky-note instagram" onclick="window.open('https://www.instagram.com/nilakarthikesan/', '_blank')">
                     📸<br>INSTAGRAM
                 </div>
-                <div class="sticky-note github" onclick="window.open('https://github.com/nila', '_blank')">
+                <div class="sticky-note github" onclick="window.open('https://github.com/nilakarthikesan', '_blank')">
                     💻<br>GITHUB
                 </div>
             </div>
@@ -793,8 +862,8 @@
         <div class="tv-container">
             <div class="tv-body">
                 <div class="tv-screen-area">
-                    <div class="tv-screen">
-                        <!-- Channel Display -->
+                                            <div class="tv-screen">
+                            <!-- Channel Display -->
                         <div class="channel-display">
                             <div class="channel-number" id="channelNumber">0</div>
                             <div class="channel-name" id="channelName">HOME</div>
@@ -847,7 +916,7 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nila/rag-moderation" target="_blank" class="project-link">GitHub</a>
+                                <a href="https://github.com/nilakarthikesan/clip-content-analyzer" target="_blank" class="project-link">GitHub</a>
                                 <a href="/projects/rag-moderation/architecture" class="project-link">Architecture</a>
                                 <a href="/projects/rag-moderation/daily-log" class="project-link">Daily Log</a>
                             </div>
@@ -931,7 +1000,7 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nila/fitnesspal-ai" target="_blank" class="project-link">GitHub</a>
+                                <a href="https://github.com/nilakarthikesan/macro-tracking-app" target="_blank" class="project-link">GitHub</a>
                                 <a href="/projects/fitnesspal-ai/architecture" class="project-link">Architecture</a>
                                 <a href="/projects/fitnesspal-ai/daily-log" class="project-link">Daily Log</a>
                             </div>
@@ -957,14 +1026,59 @@
                                 </div>
                                 
                                 <div class="project-section">
-                                    <h3 class="section-title">Experience</h3>
+                                    <h3 class="section-title">Contact & Education</h3>
+                                    <p><strong>Nila Karthikesan</strong><br>
+                                    240-408-2114 | nilakarthikesan@gmail.com<br>
+                                    linkedin.com/in/nila-karthikesan | github.com/nilakarthikesan</p>
+                                    
+                                    <p><strong>University of Maryland, College Park</strong><br>
+                                    B.S. in Computer Science, Minor in Engineering Technology<br>
+                                    Aug. 2020 – May 2024</p>
+                                    
+                                    <p><strong>Society of Women Engineers</strong><br>
+                                    Director of Engineering 2021 – 2024<br>
+                                    • Created over 50 functional projects, distributed weekly, implementing concepts from lectures on JS/React/Node/CSS, Event-Handling, Testing, Rest APIs, Backend Services, Cloud Native Development.</p>
+                                </div>
+
+                                <div class="project-section">
+                                    <h3 class="section-title">Professional Experience</h3>
+                                    
+                                    <p><strong>Software Engineer</strong> | GEICO | New York, NY | May 2024 - Present</p>
                                     <ul class="learnings-list">
-                                        <li>Building explainable AI systems with traceable evidence</li>
-                                        <li>Automated evaluation pipelines for LLM performance</li>
-                                        <li>Secure agent tool-calling APIs with scope-limited tokens</li>
-                                        <li>Vector similarity and context retrieval for grounded responses</li>
-                                        <li>Performance measurement against labeled datasets</li>
+                                        <li>Led development for full-stack application managing GEICO's server database repository, providing access to 100,000+ server records for 500+ engineers and IT staff</li>
+                                        <li>Implemented frontend using React and the backend using a GraphQL API, reducing server query time by 40%</li>
+                                        <li>Migrated scripts Power BI to PostgreSQL, achieving a 50% reduction in data processing time in Python</li>
                                     </ul>
+
+                                    <p><strong>Software Engineering Fellow</strong> | Palantir Technologies | New York, NY | Dec. 2023 – Jan. 2024</p>
+                                    <ul class="learnings-list">
+                                        <li>Developed a backend for a proxy service handling 10,000+ IPs & 100+ monthly users on an AI platform</li>
+                                        <li>Improved project load time by 80% (from minutes to seconds) using Docker & Kubernetes containers</li>
+                                    </ul>
+
+                                    <p><strong>Software Engineering Intern</strong> | Comcast | Washington, DC | May 2023 – Aug 2023</p>
+                                    <ul class="learnings-list">
+                                        <li>Developed a full-stack platform for content moderation using React.js, Flask, and Open AI's Clip LLM leading to a 15% increase in efficiency in determining inappropriate content in Comcast's media</li>
+                                        <li>Implemented containerizing microservices architecture with Docker, Kubernetes improving scalability 40%</li>
+                                        <li>Enhanced the data pipeline by integrating Elasticsearch, resulting in an 8x reduction in data retrieval times and a 20% increase in user satisfaction through faster and more accurate content flagging</li>
+                                        <li>Integrated AWS services such as EC2, S3, and RDS to handle large-scale media data storage and processing</li>
+                                    </ul>
+
+                                    <p><strong>Software Engineering Intern</strong> | Delaware INBRE | Wilmington, Delaware | May 2022 – Aug 2022</p>
+                                    <ul class="learnings-list">
+                                        <li>Led the development of a full-stack application for nanoparticle analysis, used by 100+ researchers, improving data processing speed by 60% and reducing manual effort by 30 weekly hours</li>
+                                        <li>Automated workflows using Pandas, NumPy, Airflow reducing errors by 50%, increasing productivity 25%</li>
+                                        <li>Deployed the application on AWS, ensuring 99.9% uptime and reducing operational costs by 15%</li>
+                                        <li>Implemented REST APIs for data retrieving nanoparticle optical data from experimental datasets and computational simulations reducing response times by 35% and enhancing tool integration</li>
+                                    </ul>
+                                </div>
+
+                                <div class="project-section">
+                                    <h3 class="section-title">Technical Skills</h3>
+                                    <p><strong>Languages:</strong> Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R</p>
+                                    <p><strong>Frameworks:</strong> React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI, GraphQL</p>
+                                    <p><strong>Developer Tools:</strong> Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse</p>
+                                    <p><strong>Libraries:</strong> pandas, NumPy, Matplotlib</p>
                                 </div>
                                 
                                 <div class="project-section">
@@ -974,9 +1088,9 @@
                             </div>
                             
                             <div class="project-links">
-                                <a href="https://github.com/nila" target="_blank" class="project-link">GitHub</a>
-                                <a href="https://linkedin.com/in/nila" target="_blank" class="project-link">LinkedIn</a>
-                                <a href="mailto:nila@example.com" class="project-link">Email</a>
+                                <a href="https://github.com/nilakarthikesan" target="_blank" class="project-link">GitHub</a>
+                                <a href="https://www.linkedin.com/in/nila-karthikesan/" target="_blank" class="project-link">LinkedIn</a>
+                                <a href="mailto:nilakarthikesan@gmail.com" class="project-link">Email</a>
                             </div>
                         </div>
                     </div>
@@ -994,7 +1108,7 @@
 
                 <!-- TV Control Panel -->
                 <div class="tv-control-panel">
-                    <button class="tv-control-button" id="tvPowerButton">⏻</button>
+                                            <button class="tv-control-button" id="tvPowerButton" onclick="powerOff()">⏻</button>
                     <button class="tv-control-button" id="volumeUp">▲</button>
                     <button class="tv-control-button" id="volumeDown">▼</button>
                     <button class="tv-control-button" id="muteButton">🔇</button>
@@ -1006,7 +1120,7 @@
 
                 <!-- TV Control Panel -->
                 <div class="tv-control-panel">
-                    <button class="tv-control-button" id="powerButton">⏻</button>
+                    <button class="tv-control-button" id="powerButton" onclick="powerOff()">⏻</button>
                     <button class="tv-control-button" id="volumeUp">▲</button>
                     <button class="tv-control-button" id="volumeDown">▼</button>
                     <button class="tv-control-button" id="muteButton">🔇</button>
@@ -1158,8 +1272,39 @@
                     backButton.style.display = 'block';
                 }
                 
+                // Control animated background
+                controlAnimatedBackground(pageName);
+                
                 currentPage = pageName;
             }, 200);
+        }
+
+        // Animated background control
+        function controlAnimatedBackground(pageName) {
+            const animatedBg = document.querySelector('.animated-background');
+            if (!animatedBg) return;
+            
+            // Reduce animation intensity when viewing project pages
+            if (pageName === 'project1' || pageName === 'project2' || pageName === 'project3') {
+                animatedBg.style.opacity = '0.3';
+            } else {
+                // Full animation on home page and menu
+                animatedBg.style.opacity = '1';
+            }
+        }
+
+        // Power button functionality
+        function powerOff() {
+            // Play channel change sound for effect
+            playChannelChange();
+            
+            // Show confirmation dialog
+            if (confirm('Power off TV? This will close the window.')) {
+                // Add a small delay for the sound to play
+                setTimeout(() => {
+                    window.close();
+                }, 300);
+            }
         }
 
         function updateChannelDisplay(pageName) {
@@ -1302,6 +1447,23 @@
                     document.getElementById('powerButton').click();
                 }
             });
+        });
+
+        // Video background setup
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-background');
+            if (video) {
+                video.addEventListener('loadeddata', function() {
+                    console.log('Video loaded successfully');
+                    video.play().catch(function(error) {
+                        console.log('Video autoplay failed:', error);
+                    });
+                });
+                
+                video.addEventListener('error', function(e) {
+                    console.log('Video error:', e);
+                });
+            }
         });
     </script>
 </body>
