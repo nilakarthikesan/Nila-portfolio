@@ -2,6 +2,12 @@
 
 A unique portfolio website that evolved from a traditional Next.js application into an immersive retro TV desk setup experience.
 
+## 🎉 **LIVE PORTFOLIO**
+
+**Your portfolio is now live at: [http://nilakarthikesan.com/](http://nilakarthikesan.com/)**
+
+Visit the site to experience the full interactive retro TV desk setup!
+
 ## Current Version: Retro TV Desk Setup
 
 The portfolio now features a complete desk environment with:
@@ -26,35 +32,23 @@ The portfolio now features a complete desk environment with:
 
 ## How to View the Portfolio
 
-### Option 1: Direct View (Recommended)
+### 🌐 **Live Website (Recommended)**
+**Visit: [http://nilakarthikesan.com/](http://nilakarthikesan.com/)**
+
+Your portfolio is now live and accessible to anyone with an internet connection!
+
+### Option 1: Direct View (Local)
 Simply open the `index.html` file in any web browser:
 - Download the `index.html` file from this repository
 - Double-click to open in your browser
 - Or drag and drop into any browser window
 
-### Option 2: GitHub Pages (Coming Soon)
-The portfolio will be available at: https://nilakarthikesan.github.io/Nila-portfolio/
-
-### Option 3: Local Server
+### Option 2: Local Server
 ```bash
 # Clone the repository
 git clone https://github.com/nilakarthikesan/Nila-portfolio.git
 cd Nila-portfolio
 
-# Open in browser
-open index.html
-```
-
-## Quick Start
-
-### Option 1: Standalone HTML (Recommended)
-```bash
-# Simply open the HTML file in your browser
-open index.html
-```
-
-### Option 2: Python HTTP Server
-```bash
 # Serve with Python's built-in server
 python3 -m http.server 8000
 # Then visit http://localhost:8000
