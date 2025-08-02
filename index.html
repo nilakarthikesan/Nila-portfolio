@@ -43,8 +43,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -2;
+            z-index: 0; /* bring above page background so orbs are visible */
             overflow: hidden;
+            pointer-events: none; /* let clicks pass through */
         }
 
         .floating-orb {
@@ -53,6 +54,7 @@
             background: radial-gradient(circle, rgba(255,105,180,0.8) 0%, rgba(255,182,193,0.4) 50%, transparent 100%);
             box-shadow: 0 0 20px rgba(255,105,180,0.6);
             animation: float-orb 15s infinite linear;
+            mix-blend-mode: screen; /* orbs glow on dark backgrounds */
         }
 
         .orb1 { width: 60px; height: 60px; top: 10%; left: 10%; animation-delay: 0s; animation-duration: 20s; }
@@ -220,6 +222,7 @@
             width: 100%;
             height: 100%;
             background: #000000;
+            z-index: 1; /* sit above animated background */
         }
 
         .bulletin-board {
@@ -288,6 +291,7 @@
             background: #000000;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
             border-top: 3px solid #333;
+            z-index: 1; /* sit above animated background */
         }
 
         /* Bigger 3D Retro TV */
@@ -299,6 +303,7 @@
             width: 900px;
             height: 700px;
             perspective: 1000px;
+            z-index: 1; /* sit above animated background */
         }
 
         .tv-body {
