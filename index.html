@@ -337,7 +337,7 @@
             left: 20px;
             right: 20px;
             bottom: 20px;
-            background: none; /* make screen transparent so orbs are visible */
+            background: radial-gradient(ellipse at center, #000 0%, #111 100%);
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 
@@ -346,29 +346,7 @@
             border: 1px solid #222;
         }
 
-        /* container for orbs within the TV screen */
-        .tv-background-orbs {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-            border-radius: inherit;
-        }
-
-        /* ensure overlay elements appear above the orbs */
-        .tv-screen > .channel-display,
-        .tv-screen > .back-button,
-        .tv-screen > .page,
-        .tv-screen > .tv-controls,
-        .tv-screen > .tv-control-panel,
-        .tv-screen > .remote-control {
-            position: relative;
-            z-index: 1;
-        }
+        /* Removed tv-background-orbs specific styles because orbs will live outside the TV */
 
         /* TV Speakers */
         .tv-speaker {
@@ -889,25 +867,25 @@
         <!-- Desk -->
         <div class="desk"></div>
 
+        <!-- Insert animated background behind the TV -->
+        <div class="animated-background">
+            <div class="floating-orb orb1"></div>
+            <div class="floating-orb orb2"></div>
+            <div class="floating-orb orb3"></div>
+            <div class="floating-orb orb4"></div>
+            <div class="floating-orb orb5"></div>
+            <div class="floating-orb orb6"></div>
+            <div class="floating-orb orb7"></div>
+            <div class="floating-orb orb8"></div>
+            <div class="floating-orb orb9"></div>
+            <div class="floating-orb orb10"></div>
+        </div>
+
         <!-- Bigger 3D Retro TV -->
         <div class="tv-container">
             <div class="tv-body">
                 <div class="tv-screen-area">
                     <div class="tv-screen">
-                        <!-- Pink floating-orbs background -->
-                        <div class="tv-background-orbs">
-                            <div class="floating-orb orb1"></div>
-                            <div class="floating-orb orb2"></div>
-                            <div class="floating-orb orb3"></div>
-                            <div class="floating-orb orb4"></div>
-                            <div class="floating-orb orb5"></div>
-                            <div class="floating-orb orb6"></div>
-                            <div class="floating-orb orb7"></div>
-                            <div class="floating-orb orb8"></div>
-                            <div class="floating-orb orb9"></div>
-                            <div class="floating-orb orb10"></div>
-                        </div>
-
                         <!-- Channel Display -->
                         <div class="channel-display">
                             <div class="channel-number" id="channelNumber">0</div>
