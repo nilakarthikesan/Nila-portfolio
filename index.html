@@ -337,13 +337,37 @@
             left: 20px;
             right: 20px;
             bottom: 20px;
-            background: radial-gradient(ellipse at center, #000 0%, #111 100%);
+            background: none; /* make screen transparent so orbs are visible */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 
                 inset 0 0 50px rgba(0,0,0,0.95),
                 0 0 40px rgba(255,105,180,0.6);
             border: 1px solid #222;
+        }
+
+        /* container for orbs within the TV screen */
+        .tv-background-orbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            border-radius: inherit;
+        }
+
+        /* ensure overlay elements appear above the orbs */
+        .tv-screen > .channel-display,
+        .tv-screen > .back-button,
+        .tv-screen > .page,
+        .tv-screen > .tv-controls,
+        .tv-screen > .tv-control-panel,
+        .tv-screen > .remote-control {
+            position: relative;
+            z-index: 1;
         }
 
         /* TV Speakers */
@@ -869,8 +893,22 @@
         <div class="tv-container">
             <div class="tv-body">
                 <div class="tv-screen-area">
-                                            <div class="tv-screen">
-                            <!-- Channel Display -->
+                    <div class="tv-screen">
+                        <!-- Pink floating-orbs background -->
+                        <div class="tv-background-orbs">
+                            <div class="floating-orb orb1"></div>
+                            <div class="floating-orb orb2"></div>
+                            <div class="floating-orb orb3"></div>
+                            <div class="floating-orb orb4"></div>
+                            <div class="floating-orb orb5"></div>
+                            <div class="floating-orb orb6"></div>
+                            <div class="floating-orb orb7"></div>
+                            <div class="floating-orb orb8"></div>
+                            <div class="floating-orb orb9"></div>
+                            <div class="floating-orb orb10"></div>
+                        </div>
+
+                        <!-- Channel Display -->
                         <div class="channel-display">
                             <div class="channel-number" id="channelNumber">0</div>
                             <div class="channel-name" id="channelName">HOME</div>
