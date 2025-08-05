@@ -60,7 +60,7 @@ export const projects: Project[] = [
     ],
     exampleUseCase: 'Query: "What\'s the best CRM for small businesses?" Agent queries Perplexity, ChatGPT, Claude and stores snapshots. Weekly evaluation shows: HubSpot mentioned in 80% of responses (up 15% WoW), Salesforce visibility dropped to 30%, Change correlated with Perplexity shifting to newer web sources.',
     links: {
-      github: 'https://github.com/nila/llm-seo-audit',
+      github: 'https://github.com/nilakarthikesan/llm-seo-evaluator',
       architecture: '/projects/llm-seo-audit/architecture',
       dailyLog: '/projects/llm-seo-audit/daily-log'
     },
@@ -68,24 +68,24 @@ export const projects: Project[] = [
   },
   {
     id: 'fitnesspal-ai',
-    title: 'FitnessPal + AI Agent for Personalized Meal Planning',
-    goal: 'Build a FitnessPal‑style macro tracker with an AI agent that generates daily meal plans based on a user\'s macro goals, food logs, and dietary constraints. This project integrates traditional backend development with LLM agent tool‑calling, creating an intelligent fitness assistant.',
+    title: 'FitnessPal Clone with AI Meal Planner',
+    goal: 'Build a FitnessPal‑style macro tracker with an AI assistant that generates personalized meal plans based on user\'s macro goals, food logs, and dietary constraints. Users can opt-in to AI assistance for multi-day meal planning while maintaining full control over their dietary choices.',
     techStack: [
-      'Backend: FastAPI (Auth, Food Logs, Macro Goals, Agent API)',
+      'Backend: FastAPI (Auth, Food Logs, Macro Goals, AI API)',
       'Database: Supabase (Postgres)',
       'Frontend: React/Next.js (meal log & AI plan viewer)',
-      'Agent: OpenAI LLM with tool‑calling for food search and plan generation',
-      'Auth: JWT tokens; optional OAuth for agent authorization'
+      'AI Integration: OpenAI LLM with tool‑calling for food search and plan generation',
+      'Auth: JWT tokens; optional OAuth for AI assistant authorization'
     ],
     keyLearnings: [
-      'Designing secure agent tool‑calling APIs with scope‑limited tokens.',
+      'Designing secure AI tool‑calling APIs with scope‑limited tokens.',
       'Structuring nutrition databases to allow macro computation and query efficiency.',
-      'Building LLM‑driven meal plans that respect real macro goals (±5% tolerance).',
-      'Laying groundwork for future AI coaching features (critique, swaps, recipe embeddings).'
+      'Building AI‑driven meal plans that respect real macro goals (±5% tolerance).',
+      'Creating user-controlled AI assistance that enhances rather than replaces human decision-making.'
     ],
-    exampleUseCase: 'User logs breakfast and sets macro goal: 120g protein / 60g carbs / 40g fat. Agent queries: get_goals(), get_logs(date), search_foods(). Agent returns: "For dinner, grilled chicken with quinoa and broccoli meets your macro target within ±5%."',
+    exampleUseCase: 'User logs breakfast and sets macro goal: 120g protein / 60g carbs / 40g fat. AI assistant queries: get_goals(), get_logs(date), search_foods(). AI returns: "For dinner, grilled chicken with quinoa and broccoli meets your macro target within ±5%."',
     links: {
-      github: 'https://github.com/nila/fitnesspal-ai',
+      github: 'https://github.com/nilakarthikesan/macro-tracking-app',
       architecture: '/projects/fitnesspal-ai/architecture',
       dailyLog: '/projects/fitnesspal-ai/daily-log'
     },

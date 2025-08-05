@@ -27,7 +27,7 @@ The portfolio now features a complete desk environment with:
 ### Projects Showcased
 1. RAG‑Enhanced Moderation Dashboard - Content moderation with explainable AI
 2. LLM Evaluation Agent for SEO Answer Auditing - Automated evaluation of AI search engines
-3. FitnessPal + AI Agent for Personalized Meal Planning - AI-powered meal planning assistant
+3. FitnessPal Clone with AI Meal Planner - AI-powered meal planning assistant
 4. About Nila - Skills, experience, and philosophy
 
 ## How to View the Portfolio
