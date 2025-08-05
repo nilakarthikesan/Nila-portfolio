@@ -10,7 +10,7 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 - **Remote Control**: Functional remote with digital display and channel buttons
 - **Pink Bulletin Board**: Cork board with clickable sticky notes for social links
 - **Office Environment**: Complete immersive scene with pink wall background
-- **Social Integration**: Resume, LinkedIn, Instagram, and GitHub links via sticky notes
+- **Social Integration**: Resume, LinkedIn, and GitHub links via sticky notes
 
 ### Changed
 - **TV Positioning**: Moved TV to sit naturally on the desk
