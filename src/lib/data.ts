@@ -35,7 +35,7 @@ export const projects: Project[] = [
     ],
     exampleUseCase: 'A sports clip is flagged for "violence." The system: Extracts keyframes → CLIP embeddings → retrieves similar UFC‑style flagged frames. Retrieves relevant policy text (violence category). LLM generates: "This frame shows physical altercations similar to previous UFC clips flagged for violence." Output includes evidence links for human verification.',
     links: {
-      github: 'https://github.com/nila/rag-moderation',
+      github: 'https://github.com/nilakarthikesan/clip-content-analyzer',
       architecture: '/projects/rag-moderation/architecture',
       dailyLog: '/projects/rag-moderation/daily-log'
     },
