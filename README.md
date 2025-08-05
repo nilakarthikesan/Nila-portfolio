@@ -20,7 +20,7 @@ The portfolio now features a complete desk environment with:
 ### Interactive Features
 - Remote Control: Click buttons to change channels (0-4)
 - Channel Menu: Full guide with project descriptions
-- Social Links: Click sticky notes for Resume, LinkedIn, Instagram, GitHub
+- Social Links: Click sticky notes for Resume, LinkedIn, GitHub
 - Power Button: Turn TV on/off
 - Retro TV Sounds: Channel change audio effects
 
@@ -155,7 +155,7 @@ Nila's Portfolio/
 ### Social Integration
 - Clickable Sticky Notes: Direct links to social profiles
 - Resume Access: Easy access to professional documents
-- Professional Links: LinkedIn, GitHub, Instagram integration
+- Professional Links: LinkedIn, GitHub integration
 
 ## Design System
 
