@@ -9,7 +9,7 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 - **White Desk**: Professional desk environment with realistic shadows
 - **Remote Control**: Functional remote with digital display and channel buttons
 - **Pink Bulletin Board**: Cork board with clickable sticky notes for social links
-- **Office Environment**: Complete immersive scene with pink wall background
+- **Office Environment**: Desk scene with pink wall background
 - **Social Integration**: Resume, LinkedIn, and GitHub links via sticky notes
 
 ### Changed
@@ -32,7 +32,7 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 - **Better Visual Effects**: Improved glow and shadow effects
 
 ### Changed
-- **TV Appearance**: More realistic 3D retro TV styling
+- **TV Appearance**: Revised 3D retro TV styling
 - **Navigation**: Replaced channel buttons with menu system
 - **Audio**: Updated to authentic retro TV sounds
 - **Visual Depth**: Enhanced 3D effects and lighting
@@ -40,7 +40,7 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 ### Technical
 - **CSS**: Added 3D transforms and enhanced shadows
 - **JavaScript**: Implemented menu system and improved audio
-- **Design**: More authentic retro TV appearance
+- **Design**: Revised retro TV appearance
 
 ## [1.3.0] - 2024-12-19 - Pink Retro Refinement
 
@@ -123,9 +123,9 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 
 ### Key Decisions
 1. **Pivot to Standalone HTML**: Due to disk space constraints, moved from Next.js to single HTML file
-2. **TV Interface**: Inspired by retro TV aesthetics for unique portfolio experience
-3. **Pink Theme**: Chosen for playful yet professional appearance
-4. **Desk Setup**: Created immersive office environment for realistic experience
+2. **TV Interface**: Inspired by retro TV aesthetics for portfolio navigation
+3. **Pink Theme**: Chosen for the portfolio palette
+4. **Desk Setup**: Created office scene
 
 ### Technical Challenges
 - **Disk Space**: Overcame ENOSPC errors by using standalone HTML
@@ -138,4 +138,4 @@ All notable changes to Nila's Portfolio project will be documented in this file.
 - [ ] Enhanced mobile responsiveness
 - [ ] More interactive elements
 - [ ] Performance optimizations
-- [ ] Advanced audio effects 
+- [ ] Advanced audio effects
