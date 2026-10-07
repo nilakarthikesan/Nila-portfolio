@@ -1,35 +1,28 @@
 # Nila Karthikesan portfolio
 
-An earlier personal portfolio interface built around a television and remote-control layout. The repository contains a standalone HTML version and Next.js implementations. It is a record of prior interface work; the GitHub profile README describes my current engineering and research focus.
+A responsive personal portfolio with a pink television frame and remote-inspired channel navigation. The current static website is `index.html`, `styles.css`, and `site.js`; it has no build step, external scripts, or required dependencies.
 
-## Standalone version
+## Local preview
 
-`index.html` contains the layout, styling, channel navigation, social links, and Web Audio effects.
+From the repository root:
 
 ```bash
-git clone https://github.com/nilakarthikesan/Nila-portfolio.git
-cd Nila-portfolio
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
 Open [http://localhost:8000](http://localhost:8000).
 
-## Next.js version
+The Home, Research, Engineering, and About sections remain readable without JavaScript. Native section links support keyboard navigation and browser history. JavaScript updates the channel indicator while scrolling. Reduced-motion preferences are respected, and the website does not play audio.
 
-The root `src/` directory contains the earlier Next.js interface. A separate starter application remains in `nila-portfolio/`.
+## Content
 
-From the repository root:
+The portfolio describes current engineering experience and links directly to project repositories. SafeLattice is evaluation tooling; Never Trust the Context is an ongoing policy prototype; GTSfM work is reconstruction visualization and supporting software; the CLIP analyzer is a Python prototype. Descriptions do not claim demonstrated live-model safety improvements, production moderation accuracy, or completed speculative RAG and meal-planning features.
 
-```bash
-npm install
-npm run dev
-```
+`Nila_s_Resume-11.pdf` remains an archived earlier résumé and is not linked as a current résumé. The root `src/` directory and nested `nila-portfolio/` directory contain earlier Next.js implementations, separate from the current static site.
 
-`npm run build` and `npm start` build and serve the Next.js application.
+## Hosting
 
-## Project descriptions
-
-The portfolio content includes earlier plans for CLIP moderation, language-model response comparison, and macro tracking. Descriptions of planned RAG explanations, scheduled evaluation, and meal planning should not be read as completed features. The linked repositories document their current implementation and limits.
+The static assets are portable to the existing website host. No provider-specific runtime is required. A manual GitHub Pages workflow is available if Pages is configured for this repository; running that workflow does not update a separately hosted custom domain by itself. Deployment and domain routing must match the configured hosting provider.
 
 ## License
 
